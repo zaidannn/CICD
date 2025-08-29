@@ -1,9 +1,19 @@
-def add(a, b):
-    return a + b
+from flask import Flask, jsonify, request
 
-def divide(a, b):
-    return a / b  # akan error kalau b = 0
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello, DevOps!"})
+
+@app.route("/add", methods=["GET"])
+def add_numbers():
+    try:
+        a = int(request.args.get("a", 0))
+        b = int(request.args.get("b", 0))
+        return jsonify({"result": a + b})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
-    print("Add:", add(5, 3))
-    print("Divide:", divide(5, 3))  # sengaja error
+    app.run(debug=True)
