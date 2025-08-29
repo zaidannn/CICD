@@ -6,4 +6,4 @@ def divide(a, b):
 
 if __name__ == "__main__":
     print("Add:", add(5, 3))
-    print("Divide:", divide(5, 0))  # sengaja error
+    print("Divide:", divide(5, 3))  # sengaja error
