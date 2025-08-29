@@ -1,5 +1,14 @@
+import sys
+import os
 import pytest
-from app import app, add, divide
+import add
+import divide
+
+# tambahkan path root project (CICD)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app import app   # sekarang bisa import
+
 
 # --- test fungsi langsung ---
 def test_add_function():
